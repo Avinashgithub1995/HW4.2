@@ -1,0 +1,40 @@
+<table>
+  <tr>
+    <th>Player Name</th>
+    <th>Touch Down Thrown</th>
+    <th>Rushing Yards</th>
+    <th>Snacks</th>
+    <th>Number of Goals</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let player of players">
+    <td>{{player.name}}</td>
+    <td>{{player.touchDownThrown}}</td>
+    <td>{{player.rushingYard}}</td>
+    <td>{{player.sacks}}</td>
+    <td>{{player.numberOfGoals}}</td>
+    <td><a [routerLink]="['/edit-player/',player]">Update Player</a> | <span (click)="delete(player._id)"> Delete</span>
+    </td>
+  </tr>
+</table>
+<ul>
+  <li *ngFor="let query of playerQueries" (click)="queryChanged(query)">{{query.name}}</li>
+</ul>
+<div *ngIf="queryData.length>0">
+  <table>
+    <tr>
+      <th>Player Name</th>
+      <th>Touch Down Thrown</th>
+      <th>Rushing Yards</th>
+      <th>Snacks</th>
+      <th>Number of Goals</th>
+    </tr>
+    <tr *ngFor="let player of queryData">
+      <td>{{player.name}}</td>
+      <td>{{player.touchDownThrown}}</td>
+      <td>{{player.rushingYard}}</td>
+      <td>{{player.sacks}}</td>
+      <td>{{player.numberOfGoals}}</td>
+    </tr>
+  </table>
+</div>
